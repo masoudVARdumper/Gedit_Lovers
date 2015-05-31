@@ -1,0 +1,190 @@
+@background: #001B33;
+@activeline: #003B70;
+@foreground: #E6E6E6;
+@hotpink: #CC0066;
+@pinkpurple: #CC00FF;
+@neongreen: #99FF00;
+@activelineNumber: #ff0044;
+@defaultOrange: #FF9D00;
+
+/* Code Styling */
+
+.CodeMirror, .CodeMirror-scroll {
+    background-color: @background;
+    color: @foreground;
+}
+
+.CodeMirror-focused .CodeMirror-activeline-background {
+    background: @activeline;
+}
+
+.show-line-padding .CodeMirror-focused .CodeMirror-activeline-background {
+    box-shadow: inset 15px 0 0 0 #000;
+}
+
+.CodeMirror-focused .CodeMirror-activeline {
+    .CodeMirror-gutter-elt {
+        /*background: rgba(0, 0, 0, 0.2);*/
+        background: @activeline;
+        color: @activelineNumber;
+    }
+    .inline-widget .CodeMirror-gutter-elt {
+        color: #767676;    
+    }
+}
+
+.CodeMirror-gutter-wrapper {
+	color: #ff0000;
+}
+
+.cm-comment {color: #0088ff; font-style: italic;}
+.cm-atom, .cm-number {color: #ff0044;}
+.cm-string {color: #3AD900;}
+.cm-meta, .cm-keyword, .cm-operator {color: #FF9D00;}
+.cm-tag, .cm-bracket {color: #80ffbb;}
+.cm-attribute, .cm-builtin {color: #B2B2B2;}
+/* Constants */
+.cm-variable {color: #FFFFFF; font-size: 13px;}
+/* normal variable eg: $variable */
+.cm-variable-2 {color: #B2B2B2;}
+.cm-variable-3 {color: #B2B2B2;}
+
+
+.cm-string-2, .cm-hr {color: @hotpink;}
+.cm-plus {color: @pinkpurple;}
+.cm-def, .cm-property {color: @neongreen;}
+.cm-error, .cm-minus {color: #ff0000;}
+.cm-header {color: #d85896;}
+.cm-link {color: @pinkpurple; text-decoration: none;}
+.cm-rangeinfo {color: #656de8;}
+.cm-qualifier, .cm-quote {color: #656de8;}
+
+
+/* Extra CSS */
+
+.CodeMirror-searching {
+    background-color: #660066;
+    &.searching-current-match {
+        background-color: #6600CC;
+    }
+}
+
+
+.CodeMirror-gutters {
+    background-color: @background;
+    border-right: none;
+}
+
+.CodeMirror-linenumber {
+    color: #767676;
+}
+
+.CodeMirror .CodeMirror-selected {
+    /*background: #333f48;*/
+    background: #0088ff;
+}
+
+CodeMirror-selectedtext {
+	color: #ff0000 !important; 
+}
+
+.CodeMirror-focused .CodeMirror-selected {
+    /*background: #0088FF;*/
+    /*color: #ff0000 !important;*/
+}
+
+.CodeMirror-matchingbracket {
+	color: #ff0044 !important;
+	/*font-size: 13px;*/
+}
+
+.CodeMirror-matchingbracket, .CodeMirror-matchingtag {
+    /* Ensure visibility against gray inline editor background */
+    /*background-color: #2e5c00;*/
+    background-color: #123758;
+	/*font-size: 13px;*/
+    /*border-left: 1px solid #123758 !important;*/
+    /*border-left: 1px solid #123758 !important;*/
+    /*color: @foreground !important;*/
+}
+
+.CodeMirror-cursor {
+    border-left: 2px solid #ffffff !important;
+} 
+
+.CodeMirror-overwrite .CodeMirror-cursor {
+    border-left: none !important;
+    border-bottom: 1px solid #fff;
+}
+
+
+/*
+    CodeMirror's use of descendant selectors for certain styling causes problems when editors are
+    nested because, for items in the inner editor, the left-hand clause in the selector will now
+    match either the actual containing CodeMirror instance *OR* the outer "host" CodeMirror instance.
+    TODO (issue #324): We'll still have problems if editors can be nested more than one level deep,
+    or if any other descendant-selector-driven CM styles can differ between inner & outer editors
+    (potential problem areas include line wrap and coloring theme: basically, anything in codemirror.css
+    that uses a descandant selector where the CSS class name to the left of the space is something
+    other than a vanilla .CodeMirror)
+ */
+.CodeMirror {
+    .CodeMirror {
+        background: transparent;
+    }
+
+    .CodeMirror .CodeMirror-gutters {
+        background: transparent;
+        border-right: none;
+    }
+
+    .CodeMirror .CodeMirror-activeline-background {
+        background: transparent;
+    }
+
+    .CodeMirror .CodeMirror-activeline .CodeMirror-gutter-elt {
+        background: transparent;
+        color: #767676;
+    }
+
+    .CodeMirror-focused .CodeMirror-activeline-background {
+        background: #2f2f2f;
+    }
+
+    .CodeMirror-focused .CodeMirror-activeline {
+        .CodeMirror-gutter-elt {
+            background: rgba(0, 0, 0, 0.2);
+            color: #fff;
+        }
+    }
+}
+
+.CodeMirror-foldgutter-open:after {
+    color: #666;
+}
+.CodeMirror-foldgutter-folded:after {
+    color: #ff0044;
+}
+
+.CodeMirror.over-gutter, .CodeMirror-activeline {
+    .CodeMirror-foldgutter-open:after {
+        color: #888;
+    }
+}
+
+.CodeMirror-foldmarker {
+    border-color: #000;
+    color: #ccc;
+    background-color: #666;
+}
+
+/* Non-editor styling */
+
+.image-view,
+.not-editor {
+    background-color: @background;
+}
+
+.view-pane .image-view {
+    color: @foreground;
+}
